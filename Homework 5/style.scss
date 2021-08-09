@@ -105,8 +105,13 @@ header {
   }
 }
 
+main {
+  .wrapper {
+    box-shadow: 0 3px 10px #e0e2e6;
+  }
+}
+
 .menu {
-  box-shadow: 0 3px 10px #e0e2e6;
   background-color: #fff;
   width: 40%;
   min-width: 170px;
@@ -128,6 +133,8 @@ header {
 }
 
 .content {
+  height: 100vh;
+  position: relative;
   background-color: #fff;
   border-left: solid #e0e4ed 1px;
 
@@ -150,6 +157,174 @@ header {
       align-self: flex-end;
       padding-left: 10px;
       cursor: pointer;
+    }
+  }
+
+  .form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-body;
+    padding: 5px 30px;
+    color: $color-gray-light-l;
+
+    input[type='search'] {
+      padding-left: 10px;
+      outline: none;
+      -webkit-appearance: none;
+      font: 14px Arial;
+      width: 280px;
+      height: 40px;
+      border: solid #d6d9e1 1px;
+      border-radius: 5px;
+      display: inline-block;
+      background: url(http://fe.it-academy.by/Sites/0013145/images/search.png)
+        no-repeat 250px 9px;
+      background-color: white;
+
+      &::-webkit-search-decoration,
+      &::-webkit-search-cancel-button,
+      &::-webkit-search-results-button,
+      &::-webkit-search-results-decoration {
+        display: none;
+      }
+
+      &::placeholder {
+        color: $color-gray-light-l;
+      }
+    }
+
+    &__items {
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
+      margin-right: 30px;
+
+      span {
+        font: 12px Georgia;
+      }
+    }
+  }
+
+  .post {
+    margin: 30px;
+    display: flex;
+    color: $color-gray-light-l;
+
+    &__img {
+      margin-right: 15px;
+    }
+
+    &__container {
+      &_wrap {
+        display: flex;
+        justify-content: space-between;
+
+        &-user {
+          span:first-child {
+            font-size: 12px;
+          }
+          span:last-child {
+            padding: 5px 15px;
+            background-color: $color-body;
+            border-radius: 5px;
+            margin-left: 26px;
+            font-size: 12px;
+          }
+        }
+
+        &-commets {
+          margin-right: 18px;
+          span {
+            font-size: 12px;
+            padding-right: 10px;
+          }
+        }
+      }
+
+      h3 {
+        color: $color-blue;
+        font: bold 16px Arial;
+        padding: 5px 0 5px;
+      }
+
+      p {
+        color: #000;
+        padding-bottom: 14px;
+      }
+
+      .post__container_tags {
+        .fa,
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+
+    a {
+      text-decoration: none;
+      color: black;
+      font: 14px Arial;
+      border: solid $color-gray-light-l 1px;
+      border-radius: 4px;
+
+      &:first-child {
+        margin-right: 10px;
+        padding: 10px 18px 10px 13px;
+
+        .fa {
+          padding-right: 12px;
+        }
+      }
+
+      &:last-child {
+        padding: 10px 13px 10px 18px;
+
+        .fa {
+          padding-left: 12px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    nav {
+      background-color: $color-body;
+      padding: 14px 0 14px 28px;
+      margin-bottom: 1px;
+
+      ul {
+        display: flex;
+
+        li {
+          margin-right: 18px;
+
+          a {
+            color: $color-gray-light-l;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .allrights {
+      display: flex;
+      background-color: $color-body;
+      padding: 14px 0 14px 28px;
+
+      span {
+        color: $color-gray-light-l;
+        font-size: 12px;
+        margin-left: 10px;
+      }
     }
   }
 }
