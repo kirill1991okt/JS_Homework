@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: {
+    family: Arial, Helvetica, sans-serif;
+    style: normal;
+    weight: normal;
+    size: 14px;
+  }
+
+  ul {
+    list-style: none;
+    list-style-type: none;
+  }
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+$color-body: #f2f4f8;
+$color-gray: #727989;
+$color-gray-light: #646d81;
+$color-gray-light-l: #99a1b3;
+$color-blue: #4f9cd4;
+
+body {
+  background-color: $color-body;
+}
+
+.wrapper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+header {
+  background-color: #2d313d;
+
+  .container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo img {
+      width: 32px;
+      height: 20px;
+      margin: 18px 0 18px 6px;
+    }
+
+    &__right {
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .fa {
+        color: $color-gray;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      &_city {
+        color: $color-gray;
+        a {
+          color: $color-gray;
+          border-bottom: dashed 1px;
+          margin-right: 10px;
+        }
+
+        .fa {
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+
+      &_user {
+        display: flex;
+        align-items: center;
+        span {
+          color: $color-gray;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.header-nav {
+  background-color: $color-gray-light;
+  ul {
+    display: flex;
+    li {
+      padding: 12px 0;
+      margin-right: 30px;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.menu {
+  box-shadow: 0 3px 10px #e0e2e6;
+  background-color: #fff;
+  width: 40%;
+  min-width: 170px;
+  padding-top: 20px;
+
+  h3 {
+    margin-top: 32px;
+    padding: 10px 30px 10px 25px;
+    font: 18px Georgia;
+  }
+
+  li {
+    padding: 10px 30px 10px 25px;
+
+    a {
+      color: $color-gray-light-l;
+    }
+  }
+}
+
+.content {
+  background-color: #fff;
+  border-left: solid #e0e4ed 1px;
+
+  &__container {
+    display: flex;
+    padding: 30px 0 20px 30px;
+
+    &_title {
+      font: 30px Georgia;
+    }
+
+    &_select {
+      margin-left: 28px;
+      border-bottom: dashed 1px;
+      font: 30px Georgia;
+    }
+
+    .fa-angle-down {
+      font-size: 30px;
+      align-self: flex-end;
+      padding-left: 10px;
+      cursor: pointer;
+    }
+  }
+}
