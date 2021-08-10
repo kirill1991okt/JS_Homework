@@ -166,7 +166,6 @@ main .wrapper {
 
 .menu li {
   position: relative;
-  padding: 10px 30px 10px 25px;
 }
 
 .menu li::after {
@@ -187,14 +186,29 @@ main .wrapper {
 }
 
 .menu li a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
   position: relative;
   color: #99a1b3;
+}
+
+.menu li a:hover {
+  color: #000;
 }
 
 .content {
   height: 100vh;
   background-color: #fff;
   border-left: solid #e0e4ed 1px;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .content__container {
@@ -356,7 +370,6 @@ main .wrapper {
 .content .buttons a {
   text-decoration: none;
   color: black;
-  font: 14px Arial;
   border: solid #99a1b3 1px;
   border-radius: 4px;
 }
