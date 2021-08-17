@@ -25,6 +25,7 @@
 
 body {
   background-color: #f2f4f8;
+  min-width: 483px;
 }
 
 .wrapper {
@@ -61,6 +62,7 @@ header .container__logo img {
 }
 
 header .container__right {
+  min-width: 330px;
   width: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -579,11 +581,21 @@ main .container .content .footer .allrights span {
     padding: 30px 0;
   }
   main .container .content .footer nav ul {
+    position: relative;
     -ms-flex-pack: distribute;
         justify-content: space-around;
   }
   main .container .content .footer nav ul li a {
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    display: block;
     font-size: 18px;
+  }
+  main .container .content .footer nav ul li a:hover {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
   }
   main .container .content .footer .allrights {
     display: none;
