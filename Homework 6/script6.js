@@ -1,9 +1,13 @@
-function Cat(name) {
-  var foodAmount = 0;
+function Animal(name) {
+  // this._name = name;
+
+  this._foodAmount = 0;
+
+  var self = this;
 
   this.dailyNorm = function (food) {
     if (!arguments.length) {
-      return foodAmount;
+      return this._foodAmount;
     }
 
     if (typeof food === "string" || !food || food < 0) {
@@ -17,21 +21,41 @@ function Cat(name) {
       throw new Error("Нужно меньше еды!");
     }
 
-    return (foodAmount = food);
+    return (this._foodAmount = food);
   };
 
-  function formatFoodAmount() {
-    return foodAmount + " гр.";
-  }
-
-  this.name = name;
+  this._formatFoodAmount = function () {
+    return this._foodAmount + " гр.";
+  };
 
   this.feed = function () {
-    console.log("Насыпаем в миску " + formatFoodAmount() + " корма.");
+    console.log("Насыпаем в миску " + self._formatFoodAmount() + " корма.");
+  };
+}
+
+function Cat(name) {
+  this.name = name;
+  Animal.apply(this, arguments);
+
+  var animalFeed = this.feed;
+  this.feed = function () {
+    animalFeed();
+    console.log("Кот доволен ^_^");
+    return this;
+  };
+
+  this.stroke = function () {
+    console.log("Гладим кота");
+    return this;
   };
 }
 
 var barsik = new Cat("Барсик");
 
 console.log(barsik.name);
-console.log(barsik.feed());
+console.log(barsik.dailyNorm());
+console.log(barsik.dailyNorm(80));
+console.log(barsik.dailyNorm());
+console.log(barsik.feed().stroke());
+console.log(barsik.stroke().feed());
+console.log(barsik.stroke().feed().stroke().stroke().feed());
