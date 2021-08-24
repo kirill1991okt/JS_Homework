@@ -130,6 +130,24 @@ function deepCompare(initialObj, clonedObj) {
   }
 
   for (key in initialObj) {
+    if (
+      typeof initialObj[key] === 'function' ||
+      typeof clonedObj[key] === 'function'
+    ) {
+      initialObj[key].toString();
+      clonedObj[key].toString();
+    }
+
+    console.log(initialObj[key]);
   }
+
   return true;
 }
+
+// if( (initialObj[key] == null && typeof initialObj[key] !== 'object') && (clonedObj[key] == null && typeof clonedObj[key] !== 'object') ){
+//     return false;
+// } else if ( !deepCompare(initialObj[key], clonedObj[key]) ) {
+//     return false;
+// }  else if(initialObj[key] !== clonedObj[key]){
+//      return false;
+//  }
