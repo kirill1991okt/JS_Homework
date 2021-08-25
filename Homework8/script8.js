@@ -41,3 +41,11 @@ function areAnagrams(word1, word2) {
   }
   return true;
 }
+
+    areAnagrams('кот', 'отк'); 
+    areAnagrams('кот', 'атк'); 
+    areAnagrams('кот', 'отко'); 
+
+// Задание 5
+
+function divideArr()
