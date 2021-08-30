@@ -42,10 +42,41 @@ function areAnagrams(word1, word2) {
   return true;
 }
 
-    areAnagrams('кот', 'отк'); 
-    areAnagrams('кот', 'атк'); 
-    areAnagrams('кот', 'отко'); 
+areAnagrams('кот', 'отк');
+areAnagrams('кот', 'атк');
+areAnagrams('кот', 'отко');
 
 // Задание 5
 
-function divideArr()
+//Вариант 1
+
+function divideArr(arr, number) {
+  var newArr = [];
+
+  arr.forEach(function (item, index) {
+    newArr[newArr.length] = arr.splice(0, number);
+  });
+
+  if (arr.length === 0) {
+    return newArr;
+  }
+  newArr.push(arr);
+  return newArr;
+}
+
+console.log(divideArr([1, 2, 3, 4], 2));
+console.log(divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3));
+
+// Вариант 2
+
+function divideArr(arr, number) {
+  var newArr = [];
+
+  for (var i = 0; i < arr.length; i += number) {
+    newArr.push(arr.slice(i, i + number));
+  }
+  return newArr;
+}
+
+console.log(divideArr([1, 2, 3, 4], 2));
+console.log(divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3));
