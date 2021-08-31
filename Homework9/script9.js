@@ -24,3 +24,35 @@ function makeTime(arr) {
   });
   console.log('Текущее время' + newTime);
 }
+
+// Задание 3
+
+function countVowel(str) {
+  var arr = str.split('');
+
+  var vowel = [];
+
+  arr.forEach(function (item) {
+    if (['a', 'e', 'i', 'o', 'u'].indexOf(item.toLowerCase()) !== -1) {
+      vowel.push(item);
+    }
+  });
+
+  return vowel.length;
+}
+
+// вариант 2
+
+function countVowel(str) {
+  var arr = str.split('');
+
+  var count = 0;
+
+  arr.forEach(function (item) {
+    if (['a', 'e', 'i', 'o', 'u'].indexOf(item.toLowerCase()) !== -1) {
+      count++;
+    }
+  });
+
+  return count;
+}
