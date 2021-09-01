@@ -56,3 +56,27 @@ function countVowel(str) {
 
   return count;
 }
+
+// Задание 4
+
+var string = 'Привет, студент! Студент... Как дела, студент?';
+
+function countSentencesLetters(str) {
+  var re = /[.!?]/;
+
+  var newStr = str.split(re);
+
+  var filtered = newStr.filter(function (item) {
+    return item !== '';
+  });
+
+  return filtered.forEach(function (item) {
+    console.log(
+      item.trim() +
+        ': Letters quantity is: ' +
+        item.replace(/[\s.,%]/g, '').length
+    );
+  });
+}
+
+countSentencesLetters(string);
