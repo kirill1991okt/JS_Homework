@@ -74,9 +74,45 @@ function countSentencesLetters(str) {
     console.log(
       item.trim() +
         ': Letters quantity is: ' +
-        item.replace(/[\s.,%]/g, '').length
+        item.replace(/[\s.,]/g, '').length
     );
   });
 }
 
 countSentencesLetters(string);
+
+// Задание 5
+
+function countRepeatWord(string) {
+  var newStr = string.split(/[,.!\s.,]/g);
+
+  var obj = {};
+
+  for (var i = 0; i < newStr.length; i++) {
+    if (obj[newStr[i]] === undefined) {
+      obj[newStr[i]] = 1;
+    } else {
+      obj[newStr[i]]++;
+    }
+  }
+
+  var arr = [];
+
+  for (key in obj) {
+    arr.push(obj[key]);
+  }
+
+  var maxRepeat = arr.reduce(function (previous, current) {
+    return Math.max(previous, current);
+  });
+
+  for (key in obj) {
+    if (obj[key] === maxRepeat) {
+      var wordRepeat = key;
+    }
+  }
+
+  console.log(
+    'Максимальное число повторений у слова ' + wordRepeat + ' - ' + maxRepeat
+  );
+}
