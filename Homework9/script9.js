@@ -15,6 +15,7 @@ function makeObj(arr) {
 console.log(makeObj(arrNames));
 
 // Задание 2
+//Вариант 1
 
 function makeTime(arr) {
   var newTime = '';
@@ -23,6 +24,15 @@ function makeTime(arr) {
     newTime += ' : ' + item;
   });
   console.log('Текущее время' + newTime);
+}
+
+//Вариант 2
+
+function makeTime(arr) {
+  var newTime = arr.reduce(function (acum, item) {
+    return acum + ' : ' + item;
+  });
+  console.log('Текущее время ' + newTime);
 }
 
 // Задание 3
