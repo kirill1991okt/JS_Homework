@@ -5,7 +5,7 @@ var arrNames = ['Кирилл', 'Артем', 'Дима'];
 function makeObj(arr) {
   var newObj = [];
 
-  arr.forEach(function (item, index) {
+  arr.map(function (item, index) {
     newObj[index] = { name: item };
   });
 
@@ -31,9 +31,11 @@ function makeTime(arr) {
 function makeTime(arr) {
   var newTime = arr.reduce(function (acum, item) {
     return acum + ' : ' + item;
-  });
-  console.log('Текущее время ' + newTime);
+  }, 'Текущее время');
+  console.log(newTime);
 }
+
+makeTime(['00', '13', '24']);
 
 // Задание 3
 
@@ -43,7 +45,7 @@ function countVowel(str) {
   var vowel = [];
 
   arr.forEach(function (item) {
-    if (['a', 'e', 'i', 'o', 'u'].indexOf(item.toLowerCase()) !== -1) {
+    if (['a', 'e', 'i', 'o', 'u', 'y'].indexOf(item.toLowerCase()) !== -1) {
       vowel.push(item);
     }
   });
@@ -59,7 +61,7 @@ function countVowel(str) {
   var count = 0;
 
   arr.forEach(function (item) {
-    if (['a', 'e', 'i', 'o', 'u'].indexOf(item.toLowerCase()) !== -1) {
+    if (['a', 'e', 'i', 'o', 'u', 'y'].indexOf(item.toLowerCase()) !== -1) {
       count++;
     }
   });
@@ -68,6 +70,34 @@ function countVowel(str) {
 }
 
 // Задание 4
+
+//вариант 1
+
+var string = 'Привет, студент! Студент... Как дела, студент?';
+
+function countSentencesLetters(str) {
+  var re = /[.!?]/;
+
+  var newStr = str.split(re);
+
+  var filtered = newStr.filter(function (item) {
+    return item !== '';
+  });
+
+  console.log(filtered);
+
+  return filtered.forEach(function (item) {
+    console.log(
+      item.trim() +
+        ': Letters quantity is: ' +
+        item.replace(/[\s.,]/g, '').length
+    );
+  });
+}
+
+countSentencesLetters(string);
+
+//вариант 2
 
 var string = 'Привет, студент! Студент... Как дела, студент?';
 
@@ -84,12 +114,10 @@ function countSentencesLetters(str) {
     console.log(
       item.trim() +
         ': Letters quantity is: ' +
-        item.replace(/[\s.,]/g, '').length
+        item.split(/[\s,]/).join('').length
     );
   });
 }
-
-countSentencesLetters(string);
 
 // Задание 5
 
