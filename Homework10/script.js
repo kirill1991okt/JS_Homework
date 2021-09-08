@@ -11,13 +11,28 @@ cellBtn.addEventListener('click', function () {
 });
 
 table.addEventListener('click', function (event) {
-  //   console.log(event);
-  console.dir(event.target);
-  if (event.target.tagName === 'TD' && event.target.textContent === '') {
-    event.target.innerHTML = '<input type="text">';
-    event.target.innerHTML.autofocus = true;
-    console.log(event.target.innerHTML);
+
+  if (event.target.tagName === 'TD' && event.target.textContent !== 'ADD ROW') {
+    var input = document.createElement('input');
+
+    input.type = 'text';
+
+    input.value = event.target.innerText;
+
+    event.target.textContent = '';
+
+    event.target.appendChild(input).focus();
+
+
+    input.addEventListener('blur', function () {
+      input.parentElement.innerHTML = input.value;
+    });
+
+    input.addEventListener('keydown', function (event) {
+      if (event.key == 'Enter') {
+        input.blur();
+      }
+    });
+
   }
 });
-
-// tbody.lastElementChild.firstElementChild.getAttribute('id');
