@@ -14,14 +14,17 @@ container.addEventListener('keyup', function (event) {
   }
 });
 
-
 btn.addEventListener('click', function (event) {
   event.preventDefault();
 
-
-  if (parseInt(inputX.value) > 1 && parseInt(inputX.value) < 10 && !isNaN(parseInt(inputX.value)) && parseInt(inputY.value) > 1 && parseInt(inputY.value) < 10 && !isNaN(parseInt(inputY.value))) {
-
-    // alert('Это успех!!!');
+  if (
+    parseInt(inputX.value) > 1 &&
+    parseInt(inputX.value) < 10 &&
+    !isNaN(parseInt(inputX.value)) &&
+    parseInt(inputY.value) > 1 &&
+    parseInt(inputY.value) < 10 &&
+    !isNaN(parseInt(inputY.value))
+  ) {
     var numberOfRow = parseInt(inputY.value);
     var numberOfColum = parseInt(inputX.value);
 
@@ -30,7 +33,23 @@ btn.addEventListener('click', function (event) {
 
       for (var j = 0; j < numberOfColum; j++) {
         var td = document.createElement('td');
-        tr.appendChild(td);
+        if (i % 2 === 0) {
+          if (j % 2 === 0) {
+            td.classList.add('black');
+            tr.appendChild(td);
+          } else {
+            td.classList.add('white');
+            tr.appendChild(td);
+          }
+        } else {
+          if (j % 2 === 0) {
+            td.classList.add('white');
+            tr.appendChild(td);
+          } else {
+            td.classList.add('black');
+            tr.appendChild(td);
+          }
+        }
       }
 
       tbody.appendChild(tr);
@@ -48,5 +67,12 @@ btn.addEventListener('click', function (event) {
     inputY.value = '';
   }
 
+  table.addEventListener('click', function (event) {
+    var cell = table.getElementsByTagName('td');
 
+    for (var i = 0; i < cell.length; i++) {
+      cell[i].classList.toggle('black');
+      cell[i].classList.toggle('white');
+    }
+  });
 });
