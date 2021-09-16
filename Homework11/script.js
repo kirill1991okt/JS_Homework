@@ -17,6 +17,17 @@ container.addEventListener('keyup', function (event) {
 btn.addEventListener('click', function (event) {
   event.preventDefault();
 
+  console.log(body.lastElementChild.tagName === 'TABLE');
+
+  if (body.lastElementChild.tagName === 'TABLE') {
+    var tr = table.getElementsByTagName('tr');
+    var trLength = tr.length;
+
+    for (var i = 0; i < trLength; i++) {
+      tr[0].remove();
+    }
+  }
+
   if (
     parseInt(inputX.value) > 1 &&
     parseInt(inputX.value) < 10 &&
