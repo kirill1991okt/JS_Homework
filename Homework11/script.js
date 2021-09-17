@@ -4,7 +4,6 @@ var inputX = document.getElementById('X'),
   container = document.getElementsByClassName('container')[0];
 
 var body = document.getElementsByTagName('body')[0];
-
 var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
@@ -17,16 +16,7 @@ container.addEventListener('keyup', function (event) {
 btn.addEventListener('click', function (event) {
   event.preventDefault();
 
-  console.log(body.lastElementChild.tagName === 'TABLE');
-
-  if (body.lastElementChild.tagName === 'TABLE') {
-    var tr = table.getElementsByTagName('tr');
-    var trLength = tr.length;
-
-    for (var i = 0; i < trLength; i++) {
-      tr[0].remove();
-    }
-  }
+  tbody.innerHTML = '';
 
   if (
     parseInt(inputX.value) > 1 &&
@@ -44,21 +34,18 @@ btn.addEventListener('click', function (event) {
 
       for (var j = 0; j < numberOfColum; j++) {
         var td = document.createElement('td');
+
         if (i % 2 === 0) {
           if (j % 2 === 0) {
-            td.classList.add('black');
-            tr.appendChild(td);
+            insertInTr(tr, td, 'black');
           } else {
-            td.classList.add('white');
-            tr.appendChild(td);
+            insertInTr(tr, td, 'white');
           }
         } else {
           if (j % 2 === 0) {
-            td.classList.add('white');
-            tr.appendChild(td);
+            insertInTr(tr, td, 'white');
           } else {
-            td.classList.add('black');
-            tr.appendChild(td);
+            insertInTr(tr, td, 'black');
           }
         }
       }
@@ -77,13 +64,18 @@ btn.addEventListener('click', function (event) {
     inputX.value = '';
     inputY.value = '';
   }
-
-  table.addEventListener('click', function (event) {
-    var cell = table.getElementsByTagName('td');
-
-    for (var i = 0; i < cell.length; i++) {
-      cell[i].classList.toggle('black');
-      cell[i].classList.toggle('white');
-    }
-  });
 });
+
+table.addEventListener('click', function (event) {
+  var cell = table.getElementsByTagName('td');
+
+  for (var i = 0; i < cell.length; i++) {
+    cell[i].classList.toggle('black');
+    cell[i].classList.toggle('white');
+  }
+});
+
+function insertInTr(tr, td, color) {
+  td.classList.add(color);
+  tr.appendChild(td);
+}
