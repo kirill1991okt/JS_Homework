@@ -1,0 +1,28 @@
+table {
+  border-collapse: collapse;
+}
+
+input {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px;
+  margin-left: 25px;
+}
+
+td {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+}
+
+.black {
+  background-color: #000;
+}
+
+.white {
+  background-color: #fff;
+}
