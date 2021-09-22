@@ -1,6 +1,6 @@
 button {
   position: absolute;
-  top: 30px;
+  top: 0px;
   right: 30px;
   background-color: chartreuse;
   padding: 10px;
@@ -13,12 +13,14 @@ button {
   position: relative;
   margin: 0 auto;
   max-width: 1200px;
-  height: 100vh;
-  background-color: chocolate;
+  /* background-color: chocolate; */
+}
+
+.content-tabs {
+  display: flex;
 }
 
 .users {
-  display: inline-block;
   margin-right: 5px;
   padding: 10px;
   background-color: blue;
@@ -29,4 +31,20 @@ button {
 
 .active {
   background-color: deepskyblue;
+}
+
+.description-user {
+  display: none;
+}
+
+.description-user.active {
+  display: flex;
+}
+
+.description-user>div {
+  margin-top: 30px;
+}
+
+img {
+  padding: 30px;
 }
