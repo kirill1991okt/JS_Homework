@@ -1,17 +1,32 @@
 button {
-    position: absolute;
-    top: 30px;
-    right: 130px;
-    background-color: chartreuse;
-    padding: 10px;
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: chartreuse;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .wrapper {
-    margin: 0 auto;
-    max-width: 1200px;
-    height: 100vh;
-    background-color: chocolate;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100vh;
+  background-color: chocolate;
+}
+
+.users {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 10px;
+  background-color: blue;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: deepskyblue;
 }
