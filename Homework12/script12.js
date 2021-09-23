@@ -21,35 +21,40 @@ btn.addEventListener('click', function () {
 
     xhr.onload = function () {
         if (this.status === 200) {
+
             var response = JSON.parse(this.response).data;
 
-            for (var i = 0; i <= response.length; i++) {
+            localStorage.data = JSON.stringify(response);
 
-                console.log(response[i]);
+            for (var i = 0; i <= response.length; i++) {
 
                 var users = document.createElement('div');
 
                 content.appendChild(users);
                 users.classList.add('users');
-                if (i == 0) {
-                    users.classList.add('active');
-                }
                 users.innerHTML = 'Пользователь ' + (i + 1);
+            }
+
+
+            for (var j in response) {
 
                 var descriptionUser = document.createElement('div');
 
                 descriptionUser.classList.add('description-user');
-                if (i == 0) {
-                    descriptionUser.classList.add('active');
-                }
+
                 descriptionUser.innerHTML =
                     '<img src="' +
-                    response[i]['avatar'] +
-                    '"><div><p>First name: ' + response[i]['first_name'] + '</p><p>Last name: ' + response[i]['last_name'] + '</p></div></img>';
+                    response[j].avatar +
+                    '"><div><p>First name: ' + response[j].first_name + '</p><p>Last name: ' + response[j].last_name + '</p></div></img>';
                 description.appendChild(descriptionUser);
 
-
+                console.log(description.children);
             }
+
+            description.children[0].classList.add('active');
+            content.children[0].classList.add('active');
+
+
 
             btn.disabled = true; // может можно по другому сделать
         }
