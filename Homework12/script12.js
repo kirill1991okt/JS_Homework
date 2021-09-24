@@ -24,64 +24,67 @@ function clickHandler() {
 
       localStorage.data = JSON.stringify(response);
 
-      for (var i = 0; i < response.length; i++) {
-        var users = document.createElement('div');
-        // debugger;
-        users.classList.add('users');
-        users.innerHTML = 'Пользователь ' + (i + 1);
-        content.appendChild(users);
-      }
-
-      for (var j in response) {
-        var descriptionUser = document.createElement('div');
-
-        descriptionUser.classList.add('description-user');
-
-        descriptionUser.innerHTML =
-          '<img src="' +
-          response[j].avatar +
-          '"><div><p>First name: ' +
-          response[j].first_name +
-          '</p><p>Last name: ' +
-          response[j].last_name +
-          '</p></div></img>';
-        description.appendChild(descriptionUser);
-      }
+      createUsersAndDescriptionUser(response);
 
       description.children[0].classList.add('active');
       content.children[0].classList.add('active');
 
       btn.removeEventListener('click', clickHandler);
-      //   btn.disabled = true; // может можно по другому сделать
 
       var usersTabs = document.getElementsByClassName('users');
       var userDescription = document.getElementsByClassName('description-user');
 
-      for (var i = 0; i < userDescription.length; i++) {
-        userDescription[i].setAttribute('id', 'tab_' + [i]);
-        usersTabs[i].dataset.tab = 'tab_' + [i];
-      }
-
-      for (var i = 0; i < usersTabs.length; i++) {
-        usersTabs[i].addEventListener('click', function () {
-          if (!this.classList.contains('active')) {
-            var tabId = this.getAttribute('data-tab');
-            console.log(tabId);
-            var currentTab = document.getElementById(tabId);
-            console.log(currentTab);
-            for (var j = 0; j < usersTabs.length; j++) {
-              usersTabs[j].classList.remove('active');
-            }
-
-            for (var j = 0; j < userDescription.length; j++) {
-              userDescription[j].classList.remove('active');
-            }
-
-            this.classList.add('active');
-            currentTab.classList.add('active');
-          }
-        });
-      }
+      createTabsAndDescription(usersTabs, userDescription);
     }
   };
+}
+
+function createUsersAndDescriptionUser(response) {
+  for (var i = 0; i < response.length; i++) {
+    var users = document.createElement('div');
+
+    users.classList.add('users');
+    users.innerHTML = 'Пользователь ' + (i + 1);
+    content.appendChild(users);
+  }
+
+  for (var j in response) {
+    var descriptionUser = document.createElement('div');
+    descriptionUser.classList.add('description-user');
+
+    descriptionUser.innerHTML =
+      '<img src="' +
+      response[j].avatar +
+      '"><div><p>First name: ' +
+      response[j].first_name +
+      '</p><p>Last name: ' +
+      response[j].last_name +
+      '</p></div></img>';
+    description.appendChild(descriptionUser);
+  }
+}
+
+function createTabsAndDescription(tabs, description) {
+  for (var i = 0; i < tabs.length; i++) {
+    description[i].setAttribute('id', 'tab_' + [i]);
+    tabs[i].dataset.tab = 'tab_' + [i];
+    tabs[i].addEventListener('click', function () {
+      if (!this.classList.contains('active')) {
+        var tabId = this.getAttribute('data-tab');
+        console.log(tabId);
+        var currentTab = document.getElementById(tabId);
+        console.log(currentTab);
+        for (var j = 0; j < tabs.length; j++) {
+          tabs[j].classList.remove('active');
+        }
+
+        for (var j = 0; j < description.length; j++) {
+          description[j].classList.remove('active');
+        }
+
+        this.classList.add('active');
+        currentTab.classList.add('active');
+      }
+    });
+  }
 }
