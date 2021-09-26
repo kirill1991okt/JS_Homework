@@ -48,3 +48,9 @@ button {
 img {
   padding: 30px;
 }
+
+.error {
+  font-size: 100px;
+  text-align: center;
+  color: red;
+}
