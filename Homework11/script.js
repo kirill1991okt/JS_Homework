@@ -8,7 +8,7 @@ var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
 container.addEventListener('keyup', function (event) {
-  if (inputX.value && inputY.value) {
+  if (parseInt(inputX.value) && parseInt(inputY.value)) {
     btn.removeAttribute('disabled');
   }
 });
@@ -59,10 +59,12 @@ btn.addEventListener('click', function (event) {
 
     inputX.value = '';
     inputY.value = '';
+    btn.setAttribute('disabled', true);
   } else {
     alert('Введите корректное целое число: от 1 до 10');
     inputX.value = '';
     inputY.value = '';
+    btn.setAttribute('disabled', true);
   }
 });
 
