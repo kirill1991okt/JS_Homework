@@ -8,23 +8,30 @@ var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
 container.addEventListener('keyup', function (event) {
+
   if (inputX.value && inputY.value) {
     btn.removeAttribute('disabled');
   }
+
+  if (!inputX.value.trim().length || !inputY.value.trim().length) {
+    btn.setAttribute('disabled', true);
+  }
 });
 
-// inputX.onblur = function () {
-//   if (isNaN(parseInt(inputX.value))) {
-//     inputX.value = '';
-//   }
-//   console.log(parseInt(inputY.value));
-// };
+inputX.onblur = function () {
+  if (!inputX.value.trim().length) {
+    // btn.setAttribute('disabled', true);
+    inputX.value = '';
+  }
+};
 
-// inputY.onblur = function () {
-//   if (isNaN(parseInt(inputY.value))) {
-//     inputY.value = '';
-//   }
-// };
+inputY.onblur = function () {
+  if (!inputY.value.trim().length) {
+    // btn.setAttribute('disabled', true);
+    inputY.value = '';
+  }
+};
+
 
 btn.addEventListener('click', function (event) {
   event.preventDefault();
