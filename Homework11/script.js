@@ -8,10 +8,23 @@ var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
 container.addEventListener('keyup', function (event) {
-  if (parseInt(inputX.value) && parseInt(inputY.value)) {
+  if (inputX.value && inputY.value) {
     btn.removeAttribute('disabled');
   }
 });
+
+// inputX.onblur = function () {
+//   if (isNaN(parseInt(inputX.value))) {
+//     inputX.value = '';
+//   }
+//   console.log(parseInt(inputY.value));
+// };
+
+// inputY.onblur = function () {
+//   if (isNaN(parseInt(inputY.value))) {
+//     inputY.value = '';
+//   }
+// };
 
 btn.addEventListener('click', function (event) {
   event.preventDefault();
@@ -21,10 +34,10 @@ btn.addEventListener('click', function (event) {
   if (
     parseInt(inputX.value) > 1 &&
     parseInt(inputX.value) < 10 &&
-    !isNaN(parseInt(inputX.value)) &&
+    !isNaN(+inputX.value) &&
     parseInt(inputY.value) > 1 &&
     parseInt(inputY.value) < 10 &&
-    !isNaN(parseInt(inputY.value))
+    !isNaN(+inputY.value)
   ) {
     var numberOfRow = parseInt(inputY.value);
     var numberOfColum = parseInt(inputX.value);
