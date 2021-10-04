@@ -13,18 +13,11 @@ container.addEventListener('keyup', function (event) {
   }
 });
 
-// inputX.onblur = function () {
-//   if (isNaN(parseInt(inputX.value))) {
-//     inputX.value = '';
-//   }
-//   console.log(parseInt(inputY.value));
-// };
-
-// inputY.onblur = function () {
-//   if (isNaN(parseInt(inputY.value))) {
-//     inputY.value = '';
-//   }
-// };
+container.addEventListener('keyup', function (event) {
+  if (inputX.value === '' || inputY.value === '') {
+    btn.setAttribute('disabled', true);
+  }
+});
 
 btn.addEventListener('click', function (event) {
   event.preventDefault();
@@ -32,6 +25,8 @@ btn.addEventListener('click', function (event) {
   tbody.innerHTML = '';
 
   if (
+    !(inputX.value % 1) &&
+    !(inputY.value % 1) &&
     parseInt(inputX.value) > 1 &&
     parseInt(inputX.value) < 10 &&
     !isNaN(+inputX.value) &&
