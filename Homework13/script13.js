@@ -10,7 +10,7 @@ reg.test('name_surname-1234@gmail.com');
 // Вариант 1
 function validationPhone(number) {
   var regExp =
-    /^((\+?(375))|(8(\-)?0))\-?(17|44|29|25|33)\-?[1-9]{3}\-?[0-9]{2}\-?[0-9]{2}$/;
+    /^((\+?(375-?))|(8-?0))(17|44|29|25|33)-?[1-9]{1}[\d]{2}(-?[\d]{2}){2}$/;
   var phone = number.match(regExp);
   if (phone) {
     console.log(true);
@@ -22,7 +22,7 @@ function validationPhone(number) {
 // Вариант 2
 
 function validationPhone(number) {
-  return /^((\+?(375))|(8(\-)?0))\-?(17|44|29|25|33)\-?[1-9]{3}\-?[0-9]{2}\-?[0-9]{2}$/.test(
+  return /^((\+?(375-?))|(8-?0))(17|44|29|25|33)-?[1-9]{1}[\d]{2}(-?[\d]{2}){2}$/.test(
     number
   );
 }
