@@ -83,6 +83,9 @@ function separateAge(arr) {
     if (elem.age < 40) {
       separateObj['Пользователи младше 40'].push(elem);
     }
+    if (elem.name.startsWith('Fedor')) {
+      separateObj['Пользователь с именем Федор'].push(elem);
+    }
   });
   return separateObj;
 }
@@ -101,6 +104,23 @@ separateAge([{
   }
 ]);
 
+// Задание 8
+
+function arrNames(arr) {
+  const newArr = [];
+
+
+  arr.forEach((elem, index) => {
+    newArr.push({
+      [`Пользователь ${index + 1}`]: elem
+    })
+  });
+
+  return newArr;
+}
+
+arrNames(['Kirll', 'Artem', 'Oleg']);
+
 
 /*
 ПРАКТИЧЕСКИЕ ЗАДАНИЯ ПО ES6
@@ -112,22 +132,6 @@ separateAge([{
     Функция должна возвращать результат возведения в степень y числа x, умноженный на z.
     Валидацию опустить.
 /* 
-Задание 7:
-    Написать функцию, принимающую массив объектов вида:
-      [
-          {name: 'Vasya Pupkin', age: 25},
-          {name: 'Ivan Petrov', age: 30},
-          {name: 'Fedor Ivanov', age: 42}
-      ]
-    и возвращающую объект вида:
-      {
-          Пользователи младше 40: [
-              {name: 'Vasya Pupkin', age: 25},
-              {name: 'Ivan Petrov', age: 30}
-          ],
-          Пользователь с именем Федор: {name: 'Fedor Ivanov', age: 42}
-      }
-    Для свойства "Пользователь с именем Федор" осуществлять поиск объекта по имени, которое начинается с подстроки Fedor.
 
   Задание 8:
     Написать функцию, принимающую массив имен пользователей и возвращающую массив объектов вида:
