@@ -1,7 +1,16 @@
 // Задание 1
 // ({let {a:a, b:b, ...obj} = {a: 1, b: 2, c: 3, d: 4});
 
-({ a: a, b: b, ...obj } = { a: 1, b: 2, c: 3, d: 4 });
+({
+  a: a,
+  b: b,
+  ...obj
+} = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+});
 
 // Задание 2
 
@@ -17,7 +26,10 @@ const obj = {
 // Задание 3
 
 function pow(x, y, z = 1) {
-  ({ x1, y1 } = x);
+  ({
+    x1,
+    y1
+  } = x);
   return x1 ** y1 * z;
 }
 
@@ -39,26 +51,59 @@ function sort(...arr) {
 
 sort(13, 5, 7, 2, 5, 1, 11, 22);
 
+//Можно использовать, как я понял цикл for of
+
 // Задание 6
 
 function CountVowelLetters(text) {
   text = text.toLowerCase().split('');
 
-  let count = 0;
-
   const vowelLetters = ['а', 'я', 'ы', 'и', 'о', 'ё', 'у', 'ю', 'э', 'е'];
 
-  text.forEach((element, arr) => {
-    console.log(element);
+  let count = 0;
+
+  text.forEach((elem) => {
+    vowelLetters.includes(elem) && count++;
   });
+
+  return count;
 }
+
+countVowelLetters('Шла Саша по шоссе И сосала сУшку');
+
+// Задание 7
+
+function separateAge(arr) {
+  const separateObj = {
+    'Пользователи младше 40': [],
+    'Пользователь с именем Федор': []
+  };
+
+  arr.forEach((elem) => {
+    if (elem.age < 40) {
+      separateObj['Пользователи младше 40'].push(elem);
+    }
+  });
+  return separateObj;
+}
+
+separateAge([{
+    name: 'Vasya Pupkin',
+    age: 25
+  },
+  {
+    name: 'Ivan Petrov',
+    age: 30
+  },
+  {
+    name: 'Fedor Ivanov',
+    age: 42
+  }
+]);
+
 
 /*
 ПРАКТИЧЕСКИЕ ЗАДАНИЯ ПО ES6
-  ! Все задания пишем в одном файле, ограничивая область видимости конкретного решения.
-  ! Для того, чтобы WebStorm поддерживал синтаксис ES6 - File -> Settings -> в поиске пишем JavaScript ->
-    Languages & Frameworks -> JavaScript -> Выбираем версию ES6 -> Apply
-  ! В консоли, во избежание проблем, всем тестируемым примерам также ограничиваем область видимости.
 
  Задание 3:
     Написать функцию, которая будет принимать параметры x, y, z.
@@ -66,28 +111,6 @@ function CountVowelLetters(text) {
     X и y получаем из свойств переданного в функцию объекта a и b. У z значение по-умолчанию должно быть 1.
     Функция должна возвращать результат возведения в степень y числа x, умноженный на z.
     Валидацию опустить.
-
-  
-  Задание 6:
-    Переписать решение задачи с поиском гласных на новый синтаксис. Использовать перебирающий метод массива и поиск элемента в массиве.
-      function countVowelLetters(text) {
-          text = text.toLowerCase().split('');
-
-          var vowelLetters = ['а', 'я', 'ы', 'и', 'о', 'ё', 'у', 'ю', 'э', 'е', 'a', 'e', 'i', 'o', 'u', 'y'],
-              counter = 0;
-
-          for (var i = 0; i < vowelLetters.length; i++) {
-              for (var j = 0; j < text.length; j++) {
-                  vowelLetters[i] === text[j] && counter++;
-              }
-          }
-
-          return counter;
-      }
-
-      countVowelLetters('Шла Саша по шоссе И сосала сУшку'); // 12 
-*/
-
 /* 
 Задание 7:
     Написать функцию, принимающую массив объектов вида:
