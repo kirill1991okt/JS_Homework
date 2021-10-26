@@ -9,7 +9,7 @@
   a: 1,
   b: 2,
   c: 3,
-  d: 4
+  d: 4,
 });
 
 // Задание 2
@@ -26,10 +26,7 @@ const obj = {
 // Задание 3
 
 function pow(x, y, z = 1) {
-  ({
-    x1,
-    y1
-  } = x);
+  ({ x1, y1 } = x);
   return x1 ** y1 * z;
 }
 
@@ -76,7 +73,7 @@ countVowelLetters('Шла Саша по шоссе И сосала сУшку');
 function separateAge(arr) {
   const separateObj = {
     'Пользователи младше 40': [],
-    'Пользователь с именем Федор': []
+    'Пользователь с именем Федор': [],
   };
 
   arr.forEach((elem) => {
@@ -90,18 +87,19 @@ function separateAge(arr) {
   return separateObj;
 }
 
-separateAge([{
+separateAge([
+  {
     name: 'Vasya Pupkin',
-    age: 25
+    age: 25,
   },
   {
     name: 'Ivan Petrov',
-    age: 30
+    age: 30,
   },
   {
     name: 'Fedor Ivanov',
-    age: 42
-  }
+    age: 42,
+  },
 ]);
 
 // Задание 8
@@ -109,11 +107,10 @@ separateAge([{
 function arrNames(arr) {
   const newArr = [];
 
-
   arr.forEach((elem, index) => {
     newArr.push({
-      [`Пользователь ${index + 1}`]: elem
-    })
+      [`Пользователь ${index + 1}`]: elem,
+    });
   });
 
   return newArr;
@@ -121,6 +118,17 @@ function arrNames(arr) {
 
 arrNames(['Kirll', 'Artem', 'Oleg']);
 
+// Задание 9
+
+function toCombine(arr) {
+  var obj = {};
+
+  arr.forEach((item) => {
+    Object.assign(obj, item);
+  });
+
+  return obj;
+}
 
 /*
 ПРАКТИЧЕСКИЕ ЗАДАНИЯ ПО ES6
@@ -133,29 +141,7 @@ arrNames(['Kirll', 'Artem', 'Oleg']);
     Валидацию опустить.
 /* 
 
-  Задание 8:
-    Написать функцию, принимающую массив имен пользователей и возвращающую массив объектов вида:
-      [
-          {Пользователь 1: 'Вася'},
-          {Пользователь 2: 'Петя'}
-      ]
-
-  Задание 9:
-    Написать функцию, принимающую массив объектов и объединяющую их в один новый объект. Например:
-      [
-          {name: 'Vasya'},
-          {name: 'Piotr', age: 25},
-          {salary: '2000$'}
-      ]
-    необходимо преобразовать в
-      {
-          name: 'Piotr',
-          age: 25,
-          salary: '2000$'
-      }
-    Spread-оператор не использовать. Использовать перебирающий метод массивов. Старые объекты не должны преобразовываться.
-
-  Задание 10:
+    Задание 10:
     Переписать последнее задание с ООП на новый синтаксис. Проверить работоспособность всех методов.
 
   Задание 11:
