@@ -14,7 +14,7 @@
 
 // Задание 2
 
-let name = prompt('Как вас зовут?');
+let name = prompt("Как вас зовут?");
 
 const obj = {
   name,
@@ -26,13 +26,16 @@ const obj = {
 // Задание 3
 
 function pow(x, y, z = 1) {
-  ({ x1, y1 } = x);
+  ({
+    x1,
+    y1
+  } = x);
   return x1 ** y1 * z;
 }
 
 // Задание 4
 
-const arr = ['Kirill', 11];
+const arr = ["Kirill", 11];
 
 function NameAge(name, age) {
   return `Hello, I'm ${name} and I'm ${age} years old.`;
@@ -53,9 +56,9 @@ sort(13, 5, 7, 2, 5, 1, 11, 22);
 // Задание 6
 
 function CountVowelLetters(text) {
-  text = text.toLowerCase().split('');
+  text = text.toLowerCase().split("");
 
-  const vowelLetters = ['а', 'я', 'ы', 'и', 'о', 'ё', 'у', 'ю', 'э', 'е'];
+  const vowelLetters = ["а", "я", "ы", "и", "о", "ё", "у", "ю", "э", "е"];
 
   let count = 0;
 
@@ -66,38 +69,37 @@ function CountVowelLetters(text) {
   return count;
 }
 
-countVowelLetters('Шла Саша по шоссе И сосала сУшку');
+countVowelLetters("Шла Саша по шоссе И сосала сУшку");
 
 // Задание 7
 
 function separateAge(arr) {
   const separateObj = {
-    'Пользователи младше 40': [],
-    'Пользователь с именем Федор': [],
+    "Пользователи младше 40": [],
+    "Пользователь с именем Федор": [],
   };
 
   arr.forEach((elem) => {
     if (elem.age < 40) {
-      separateObj['Пользователи младше 40'].push(elem);
+      separateObj["Пользователи младше 40"].push(elem);
     }
-    if (elem.name.startsWith('Fedor')) {
-      separateObj['Пользователь с именем Федор'].push(elem);
+    if (elem.name.startsWith("Fedor")) {
+      separateObj["Пользователь с именем Федор"].push(elem);
     }
   });
   return separateObj;
 }
 
-separateAge([
-  {
-    name: 'Vasya Pupkin',
+separateAge([{
+    name: "Vasya Pupkin",
     age: 25,
   },
   {
-    name: 'Ivan Petrov',
+    name: "Ivan Petrov",
     age: 30,
   },
   {
-    name: 'Fedor Ivanov',
+    name: "Fedor Ivanov",
     age: 42,
   },
 ]);
@@ -116,7 +118,7 @@ function arrNames(arr) {
   return newArr;
 }
 
-arrNames(['Kirll', 'Artem', 'Oleg']);
+arrNames(["Kirll", "Artem", "Oleg"]);
 
 // Задание 9
 
@@ -129,6 +131,37 @@ function toCombine(arr) {
 
   return obj;
 }
+
+// Задание 11
+
+function rangeNumber(a, b) {
+  return new Promise((resolve, reject) => {
+
+    if (a > b) {
+      [b, a] = [a, b];
+    }
+
+    let timerId = setInterval(() => {
+
+      if (a < b && Number.isInteger(a) && Number.isInteger(b)) {
+        console.log(a++);
+        if (a === b) {
+          resolve(b);
+          clearInterval(timerId);
+        }
+      } else {
+        reject('Числа должны быть целые числа!');
+      }
+
+    }, 1000);
+  });
+}
+
+rangeNumber(2, 6)
+  .then((b) => {
+    console.log(b);
+  })
+  .catch((reject) => console.log(reject));
 
 /*
 ПРАКТИЧЕСКИЕ ЗАДАНИЯ ПО ES6
