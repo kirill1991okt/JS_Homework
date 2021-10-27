@@ -163,6 +163,59 @@ rangeNumber(2, 6)
   })
   .catch((reject) => console.log(reject));
 
+// Задание 10
+
+class Animal {
+  constructor(name) {
+    this.name = name;
+    this._foodAmount = 50;
+
+  }
+
+  _formatFoodAmount() {
+    return this._foodAmount + ' гр.';
+  }
+
+  dailyNorm(amount) {
+    if (!arguments.length) return this._formatFoodAmount();
+
+    if (amount < 50 || amount > 500) {
+      return 'Недопустимое количество корма.';
+    }
+
+    this._foodAmount = amount;
+  }
+
+  feed() {
+    console.log('Насыпаем в миску ' + this.dailyNorm() + ' корма.');
+  }
+
+}
+
+class Cat extends Animal {
+
+  feed() {
+    super.feed();
+    console.log('Кот доволен ^_^');
+    return this;
+  }
+
+  stroke() {
+    console.log('Гладим кота.');
+    return this;
+  }
+}
+
+var barsik = new Cat('Барсик');
+
+console.log(barsik.name);
+console.log(barsik.dailyNorm());
+console.log(barsik.dailyNorm(80));
+console.log(barsik.dailyNorm());
+console.log(barsik.feed().stroke());
+console.log(barsik.stroke().feed());
+console.log(barsik.stroke().feed().stroke().stroke().feed());
+
 /*
 ПРАКТИЧЕСКИЕ ЗАДАНИЯ ПО ES6
 
