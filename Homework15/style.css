@@ -1,0 +1,34 @@
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 20px;
+  width: 140px;
+  background-color: cadetblue;
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 10px 8px 10px 0px rgba(58, 101, 134, 0.34);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.minutes,
+.seconds,
+.miliseconds {
+  background-color: cadetblue;
+  border-radius: 10px;
+  width: 60px;
+  height: 45px;
+  text-align: center;
+  font-size: 40px;
+  margin-right: 10px;
+  box-shadow: 10px 8px 10px 0px rgba(58, 101, 134, 0.34);
+}
