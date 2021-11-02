@@ -14,13 +14,15 @@ class AddAndList extends Component {
                     <input class="task-add__title" type="text" placeholder="Task title">
                     
                     <button class="task-add__btn-add button" disabled>Add Task</button>
+
+                    <textarea class = "desciption"></textarea>
                 </div>       
                   
                 <div class="tasks">
                 <div class="tasks__container">
-                <p>There are ${
+                <p>There are <span id = "count">${
                   JSON.parse(localStorage.getItem('tasks')).length
-                }  tasks</p>
+                } </span>tasks</p>
                 <button class="clearAll">Clear Tasks List</button>
                 </div>
                     <div class="tasks__list">
@@ -28,6 +30,7 @@ class AddAndList extends Component {
                           .map((task) => this.getTaskHTML(task))
                           .join('\n ')}
                     </div>
+                    
                 </div>            
             `);
     });
@@ -42,14 +45,17 @@ class AddAndList extends Component {
       addTaskBtn = document.getElementsByClassName('task-add__btn-add')[0],
       tasksContainer = document.getElementsByClassName('tasks')[0],
       tasksList = document.getElementsByClassName('tasks__list')[0],
-      collectionTask = document.querySelectorAll('.task');
+      collectionTask = document.querySelectorAll('.task'),
+      textarea = document.querySelector('textarea');
+      this.count = document.getElementById('count');
+
 
     addTaskTitle.addEventListener(
       'keyup',
       () => (addTaskBtn.disabled = !addTaskTitle.value.trim())
     );
     addTaskBtn.addEventListener('click', () =>
-      this.addTask(addTaskTitle, addTaskBtn, tasksList)
+      this.addTask(addTaskTitle, addTaskBtn, tasksList, textarea)
     );
 
     tasksContainer.addEventListener('click', (event) => {
@@ -72,11 +78,12 @@ class AddAndList extends Component {
     });
   }
 
-  addTask(addTaskTitle, addTaskBtn, tasksList) {
+  addTask(addTaskTitle, addTaskBtn, tasksList, textarea) {
     const newTask = {
       id: generateID(),
       title: addTaskTitle.value.trim(),
       status: 'In Progress',
+      description: textarea.value
     };
 
     this.tasks.push(newTask);
@@ -85,6 +92,8 @@ class AddAndList extends Component {
     this.clearAddTask(addTaskTitle, addTaskBtn);
 
     tasksList.insertAdjacentHTML('beforeEnd', this.getTaskHTML(newTask));
+
+    this.count.innerHTML = this.tasks.length;
   }
 
   getTaskHTML(task) {
@@ -119,18 +128,23 @@ class AddAndList extends Component {
       Tasks.setTasksToLS(this.tasks);
 
       taskContainer.remove();
+
+      this.count.innerHTML = this.tasks.length;
     }
   }
 
   removeAllTask(collectionTask) {
     if (confirm('Are you sure?')) {
-      // Tasks.setTasksToLS({});
+      this.tasks = [];
+      Tasks.setTasksToLS(this.tasks);
 
       collectionTask.forEach((element) => {
         element.remove();
       });
+
+      this.count.innerHTML = this.tasks.length;
       // console.log(this.tasks);
-      // console.log(collectionTask.length);
+      console.log(collectionTask);
       // console.log(this.tasks);
       // console.log(JSON.parse(localStorage.getItem('tasks')));
     }
