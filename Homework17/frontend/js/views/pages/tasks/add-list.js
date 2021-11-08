@@ -95,9 +95,6 @@ class AddAndList extends Component {
           const idDone = event.target.attributes[1].value;
           console.log(this.task);
           this.changeTaskStatus(
-            target.parentNode.parentNode,
-            target.previousElementSibling,
-            target,
             idDone
           );
           break;
@@ -195,21 +192,15 @@ class AddAndList extends Component {
     location.hash = `#/task/${id}`;
   }
 
-  changeTaskStatus(taskContainer, editTaskBtn, doneTaskBtn, idDone) {
-    const newObj = {
-      title: 'asdfasdf',
-      description: 'No Description',
-      id: 'bjTRYITOk',
-      status: 'In Progress',
-    };
-    this.model.changeStatus(idDone, this.task).then(() => {
-      console.log(this.model);
-      taskContainer.classList.add('task_done');
-      editTaskBtn.remove();
-      doneTaskBtn.remove();
+  changeTaskStatus(id) {
+    this.model.getTask(id).then((task) => {
+      task.status = 'Done';
 
-      this.countTasksAmount();
-    });
+      this.model.changeStatus(id, task);
+      
+    })
+    
+  
   }
 
   removeTask(tasksList, taskContainer, clearTasksListBtn, id) {

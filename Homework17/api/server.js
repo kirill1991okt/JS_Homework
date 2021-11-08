@@ -46,10 +46,12 @@ app.put('/api/task/:id', (req, res) => {
   const tasksData = getTasksFromDB(),
     task = tasksData.find((task) => task.id === req.params.id),
     updatedTask = req.body;
-  console.log(tasksData);
+    
 
   task.title = updatedTask.title;
   task.description = updatedTask.description || 'No Description';
+  task.status = updatedTask.status;
+  
 
   setTasksToDB(tasksData);
 

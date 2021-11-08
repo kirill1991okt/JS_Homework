@@ -33,6 +33,7 @@ class Tasks {
       const xhr = new XMLHttpRequest();
 
       xhr.open('GET', `http://localhost:3000/api/task/${id}`);
+      console.log(xhr.response);
 
       xhr.onload = () => resolve(JSON.parse(xhr.response));
 
@@ -60,6 +61,7 @@ class Tasks {
       xhr.open('DELETE', `http://localhost:3000/api/task`);
       xhr.setRequestHeader('Content-Type', 'application/json');
 
+      
       xhr.onload = () => resolve();
       xhr.send(JSON.stringify({ id }));
     });
@@ -80,16 +82,18 @@ class Tasks {
     });
   }
 
-  // changeStatus(id, task) {
-  //   return new Promise((resolve) => {
-  //     const xhr = new XMLHttpRequest();
-  //     xhr.open('PUT', `http://localhost:3000/api/task/${id}`);
+  changeStatus(id, task) {
+    return new Promise((resolve) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', `http://localhost:3000/api/task/${id}`);
+      xhr.setRequestHeader('Content-Type', 'application/json');
 
-  //     xhr.onload = () => resolve();
+      xhr.onload = () => resolve();
 
-  //     xhr.send(JSON.stringify(task));
-  //   });
-  // }
+
+      xhr.send(JSON.stringify(task));
+    });
+  }
 }
 
 export default Tasks;
