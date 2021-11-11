@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__container">
+          <a href="#"><img src="../img/Logo.png" alt="Logo" /></a>
+          <div class="header__container-user">
+            <i class="fas fa-user"></i>
+            <span class="header__container-user-name">Kirill</span
+            ><i class="fas fa-sort-down"></i>
+            <div class="dropdown">
+              <i class="fas fa-power-off"></i>
+              <span>Logout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-block">
+      <div class="wrapper">
+        <div class="container">
+          <div class="container__families">
+            <div class="container__families-selects">
+              <div class="container__families-selects-item">
+                <label for="family">Family (Lev. 1)</label>
+                <select name="family" id="family">
+                  <option value="Select a family" selected>
+                    Select a family
+                  </option>
+                  <option value="Liquid chillers">Liquid chillers</option>
+                  <option value="Reversible Heat Pumps">
+                    Reversible Heat Pumps
+                  </option>
+                </select>
+              </div>
+              <div class="container__families-selects-item">
+                <label for="type">Type (Lev. 2)</label>
+                <select name="type" id="type">
+                  <option value="Select a type" selected>Select a type</option>
+                  <option value="Air Cooled">Air Cooled</option>
+                  <option value="Water Cooled">Water Cooled</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

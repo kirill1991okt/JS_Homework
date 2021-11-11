@@ -9,6 +9,8 @@
   //   background-color: #ffffff;
 }
 
+// файл логин
+
 .main {
   position: relative;
   margin-top: 120px;
@@ -57,8 +59,131 @@
         border-radius: 7px;
         border: 1px solid #cccccc;
         text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
         margin-bottom: 50px;
+
+        &:hover {
+          background-color: #e6e6e6;
+        }
       }
     }
   }
 }
+
+// файл selection
+
+.header {
+  display: flex;
+  background-color: #f5f0f0;
+  border-bottom: 1px solid #ccc;
+
+  .wrapper {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background-color: #fafafa;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 1px 4px rgba(34, 60, 80, 0.2);
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      img {
+        width: 160px;
+        height: 40px;
+      }
+    }
+
+    &-user {
+      position: relative;
+      display: flex;
+      cursor: pointer;
+
+      .fa-user {
+        align-self: center;
+      }
+      span {
+        font-size: 14px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .dropdown {
+        display: none;
+      }
+
+      .dropdown.open {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 30px;
+        padding: 10px 30px;
+        border-radius: 6px;
+        border: 1px solid #cccccc;
+        background-color: #fff;
+        // display: block;
+        &::before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 10px 10px 10px;
+          border-color: transparent transparent #cccccc transparent;
+          position: absolute;
+          top: -10px;
+          left: 15px;
+        }
+      }
+    }
+  }
+}
+
+.main-block {
+  .wrapper {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+  }
+
+  .container {
+    width: 100%;
+    background-color: #f6f7f8;
+    border: 1px solid #d4d4d4;
+    border-top: 0;
+    box-shadow: 0 1px 4px rgba(34, 60, 80, 0.2);
+    padding: 25px;
+
+    &__families {
+      width: 100%;
+      display: flex;
+
+      &-selects {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        &-item {
+          select {
+            width: 300px;
+            padding: 4px 6px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+//
